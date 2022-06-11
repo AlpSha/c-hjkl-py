@@ -15,10 +15,16 @@ def main():
     threading.Thread(target=listen_keyboards)
     keyboards = detector.enumerate_keyboards()
 
+    threads = []
     for keyboard in keyboards:
         print('Found keyboard: ' + keyboard.name)
         handler = keyboard_handler.new(keyboard.path)
-        threading.Thread(target=handler.run_forever)
+        t = threading.Thread(target=handler.run_forever)
+        t.start()
+        threads.append(t)
+
+    for t in threads:
+        t.join()
 
 
 if __name__ == '__main__':

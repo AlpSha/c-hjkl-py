@@ -11,7 +11,7 @@ def enumerate_keyboards():
         file = open('/proc/bus/input/devices', 'r')
     except:
         print('Unable to open /proc/bus/input/devices')
-        return
+        return []
     entries = collect_device_entries(file)
     keyboards = []
     for entry in entries:
@@ -19,7 +19,8 @@ def enumerate_keyboards():
             continue
         if entry['ev'] != '120013':
             continue
-        keyboards.append(Keyboard(entry['name'], entry['handler']))
+        path = '/dev/input/' + entry['handler']
+        keyboards.append(Keyboard(entry['name'], path))
     return keyboards
 
 

@@ -18,10 +18,12 @@ def main():
     threads = []
     for keyboard in keyboards:
         print('Found keyboard: ' + keyboard.name)
-        handler = keyboard_handler.new(keyboard.path)
+        handler = keyboard_handler.new(keyboard)
         t = threading.Thread(target=handler.run_forever)
-        t.start()
         threads.append(t)
+
+    for t in threads:
+        t.start()
 
     for t in threads:
         t.join()

@@ -34,12 +34,26 @@ class KeyboardHandler:
                     continue
                 if event.code == KEY_LEFTCTRL:
                     ctrl_pressed = event.value != 0
-                elif event.code == KEY_CAPSLOCK:
-                    self.uinput.write(EV_KEY, KEY_ESC, event.value)
-                    print("Injecting ESC")
-                else:
-                    self.uinput.write_event(event)
-                print('Ctrl pressed: ' + str(ctrl_pressed))
+                if event.code == KEY_CAPSLOCK:
+                    event.code = KEY_ESC
+                if event.value >= 1 and ctrl_pressed:
+                    key_to_press = 0
+                    if event.code == KEY_H:
+                       key_to_press = KEY_LEFT
+                    elif event.code == KEY_K:
+                        key_to_press = KEY_UP
+                    elif event.code == KEY_L:
+                        key_to_press = KEY_RIGHT
+
+                    if key_to_press > 0:
+                        self.uinput.write(EV_KEY, KEY_LEFTCTRL, 0)
+                        self.uinput.write(EV_KEY, key_to_press, 1)
+                        self.uinput.write(EV_KEY, key_to_press, 0)
+                        self.uinput.write(EV_KEY, KEY_LEFTCTRL, 0)
+                        self.uinput.syn()
+                        continue
+                
+                self.uinput.write_event(event)
                 self.uinput.syn()
         except:
             print("Problems....")

@@ -44,6 +44,8 @@ class KeyboardHandler:
                         key_to_press = KEY_UP
                     elif event.code == KEY_L:
                         key_to_press = KEY_RIGHT
+                    elif event.code == KEY_J:
+                        key_to_press = KEY_DOWN
 
                     if key_to_press > 0:
                         self.uinput.write(EV_KEY, KEY_LEFTCTRL, 0)

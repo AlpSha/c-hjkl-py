@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]:-$0}"; )" &> /dev/null && pwd 2> /dev/null; )";
-
-/usr/bin/python3 "$SCRIPT_DIR/src/main.py"
+/usr/bin/python3 "/opt/c-hjkl-py/src/main.py"
 
 

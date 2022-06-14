@@ -51,7 +51,7 @@ class KeyboardHandler:
                         self.uinput.write(EV_KEY, KEY_LEFTCTRL, 0)
                         self.uinput.write(EV_KEY, key_to_press, 1)
                         self.uinput.write(EV_KEY, key_to_press, 0)
-                        self.uinput.write(EV_KEY, KEY_LEFTCTRL, 0)
+                        self.uinput.write(EV_KEY, KEY_LEFTCTRL, 1)
                         self.uinput.syn()
                         continue
                 

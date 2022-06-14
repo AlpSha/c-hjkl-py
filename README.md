@@ -14,3 +14,13 @@ After mapping the keys, it passes the events to Uinput device. So your system ge
 
 # Can I change the Ctrl key to semothing else?
 You can, simply by changing the keycode assigned to KEY_LEFTCTRL variable on src/keyboard_handler.py
+
+# Installation
+I highly recommend cloning the repo as root user. Because it will be executed by root and if user account can edit the project files, it becomes vulnerable to privilage escalation in case your user account gets compromised.
+
+```console
+$ sudo su
+# cd opt
+# git clone https://github.com/AlpSha/c-hjkl-py.git
+# cd c-hjkl-py; ./install.sh
+```

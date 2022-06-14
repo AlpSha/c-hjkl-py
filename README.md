@@ -20,7 +20,7 @@ I highly recommend cloning the repo as root user. Because it will be executed by
 
 ```console
 $ sudo su
-# cd opt
+# cd /opt
 # git clone https://github.com/AlpSha/c-hjkl-py.git
 # cd c-hjkl-py; ./install.sh
 ```

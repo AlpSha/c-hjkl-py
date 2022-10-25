@@ -17,6 +17,7 @@ KEY_LEFT = 105
 KEY_RIGHT = 106
 KEY_DOWN = 108
 
+
 class KeyboardHandler:
     def __init__(self, device: evdev.InputDevice, uinput: UInput):
         self.device = device
@@ -39,7 +40,7 @@ class KeyboardHandler:
                 if event.value >= 1 and ctrl_pressed:
                     key_to_press = 0
                     if event.code == KEY_H:
-                       key_to_press = KEY_LEFT
+                        key_to_press = KEY_LEFT
                     elif event.code == KEY_K:
                         key_to_press = KEY_UP
                     elif event.code == KEY_L:
@@ -54,13 +55,12 @@ class KeyboardHandler:
                         self.uinput.write(EV_KEY, KEY_LEFTCTRL, 1)
                         self.uinput.syn()
                         continue
-                
+               
                 self.uinput.write_event(event)
                 self.uinput.syn()
         except:
             print("Problems....")
             print(sys.exc_info()[0])
-
 
 
 def new(keyboard: enumerator.Keyboard):

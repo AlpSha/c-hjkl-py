@@ -64,6 +64,5 @@ class KeyboardHandler:
 
 
 def new(keyboard: enumerator.Keyboard):
-    return KeyboardHandler(evdev.InputDevice(keyboard.path), UInput(name=keyboard.name))
-
-
+    device = evdev.InputDevice(keyboard.path)
+    return KeyboardHandler(device, evdev.UInput.from_device(device, name=keyboard.name))

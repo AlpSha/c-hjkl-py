@@ -5,17 +5,17 @@ from evdev import UInput
 from evdev.ecodes import EV_KEY
 import enumerator
 
-KEY_ESC = 1;
-KEY_LEFTCTRL = 29;
-KEY_CAPSLOCK = 58;
-KEY_H = 36;
-KEY_J = 46;
-KEY_K = 47;
-KEY_L = 25;
-KEY_UP = 103;
-KEY_LEFT = 105;
-KEY_RIGHT = 106;
-KEY_DOWN = 108;
+KEY_ESC = 1
+KEY_LEFTCTRL = 29
+KEY_CAPSLOCK = 58
+KEY_H = 36
+KEY_J = 46
+KEY_K = 47
+KEY_L = 25
+KEY_UP = 103
+KEY_LEFT = 105
+KEY_RIGHT = 106
+KEY_DOWN = 108
 
 class KeyboardHandler:
     def __init__(self, device: evdev.InputDevice, uinput: UInput):
